@@ -1,0 +1,40 @@
+tge-website/
+├── app/
+│   ├── layout.tsx          # Root layout with global styles, metadata, schemas
+│   ├── page.tsx            # Home page with rewritten copy
+│   ├── globals.css         # Tailwind imports
+│   ├── countries/
+│   │   └── [slug]/
+│   │       └── page.tsx    # Dynamic country page
+│   ├── universities/
+│   │   └── [slug]/
+│   │       └── page.tsx    # Dynamic university page
+│   ├── courses/
+│   │   └── [slug]/
+│   │       └── page.tsx    # Dynamic course page
+│   ├── blog/
+│   │   └── [slug]/
+│   │       └── page.tsx    # Dynamic blog post page
+│   ├── admin/
+│   │   └── leads/
+│   │       └── page.tsx    # Admin leads view (password-protected)
+│   ├── sitemap.xml/
+│   │   └── route.ts        # Dynamic sitemap generation
+│   └── robots.txt/
+│       └── route.ts        # Robots.txt generation
+├── components/
+│   ├── LeadForm.tsx        # Reusable lead form component
+│   ├── Header.tsx          # Navigation header
+│   ├── Footer.tsx          # Footer
+│   └── ui/                 # Tailwind UI components (e.g., Button, Input)
+├── lib/
+│   ├── supabase.ts         # Supabase client setup
+│   └── utils.ts            # Helper functions (e.g., for metadata)
+├── public/
+│   ├── favicon.ico         # Favicon
+│   └── images/             # Static images (e.g., hero-bg.jpg)
+├── .env.local              # Environment variables (see below)
+├── next.config.js          # Next.js config for images, etc.
+├── package.json            # Dependencies (next, tailwind, supabase)
+└── tailwind.config.js      # Tailwind config
+
