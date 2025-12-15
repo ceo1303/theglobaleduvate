@@ -1,0 +1,44 @@
+import { Metadata } from 'next';
+import './globals.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+export const metadata: Metadata = {
+  title: 'The Global Eduvate (TGE) - Study Abroad Made Easy',
+  description: 'Connect with top universities worldwide. Get personalized guidance for your international education journey.',
+  openGraph: {
+    title: 'The Global Eduvate (TGE)',
+    description: 'Your gateway to global education.',
+    url: 'https://tge.com',
+    siteName: 'TGE',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "The Global Eduvate",
+              url: "https://tge.com",
+              logo: "https://tge.com/logo.png",
+            }),
+          }}
+        />
+      </head>
+      <body className="bg-gray-50 text-gray-900">
+        <Header />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}

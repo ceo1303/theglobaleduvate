@@ -1,0 +1,4 @@
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+WHATSAPP_NUMBER=1234567890  # Replace with your WhatsApp business number
+ADMIN_PASSWORD=admin123     # For admin access (use a secure method in production)

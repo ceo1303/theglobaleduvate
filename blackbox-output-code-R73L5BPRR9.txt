@@ -1,0 +1,50 @@
+import { Metadata } from 'next';
+import { supabase } from '../../../lib/supabase';
+import Link from 'next/link';
+
+interface Country {
+  id: number;
+  slug: string;
+  name: string;
+  description: string;
+  universities: { slug: string; name: string }[];
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { data } = await supabase.from('countries').select('*').eq('slug', params.slug).single();
+  return {
+    title: `${data.name} - Study in ${data.name} | TGE`,
+    description: data.description,
+    canonical: `https://tge.com/countries/${params.slug}`,
+    openGraph: { title: data.name, description: data.description },
+  };
+}
+
+export default async function CountryPage({ params }: { params: { slug: string } }) {
+  const { data: country } = await supabase.from('countries').select('*, universities(slug, name)').eq('slug', params.slug).single();
+
+  return (
+    <div className="max-w-4xl mx-auto p-4">
+      <h1 className="text-4xl font-bold mb-4">{country.name}</h1>
+      <p className="mb-8">{country.description}</p>
+      <h2 className="text-2xl font-semibold mb-4">Universities in {country.name}</h2>
+      <ul className="mb-8">
+        {country.universities.map((uni) => (
+          <li key={uni.slug}><Link href={`/universities/${uni.slug}`} className="text-blue-600">{uni.name}</Link></li>
+        ))}
+      </ul>
+      {/* FAQ Section with Schema */}
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">FAQs</h2>
+        <div itemScope itemType="https://schema.org/FAQPage">
+          <div itemScope itemType="https://schema.org/Question">
+            <h3 itemProp="name">Why study in {country.name}?</h3>
+            <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+              <p itemProp="text">Top-ranked universities and diverse opportunities.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

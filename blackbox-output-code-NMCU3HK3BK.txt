@@ -1,0 +1,84 @@
+import Image from 'next/image';
+import LeadForm from '../components/LeadForm';
+
+export default function Home() {
+  return (
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl font-bold mb-4">Unlock Your Global Education Journey</h1>
+          <p className="text-xl mb-8">Connect with top universities worldwide and turn your dreams into reality with personalized guidance.</p>
+          <div className="flex justify-center gap-4">
+            <a href="#lead-form" className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">Apply Now</a>
+            <a href={`https://wa.me/${process.env.WHATSAPP_NUMBER}?text=Hi%20TGE%2C%20I%20need%20help%20with%20study%20abroad`} className="bg-green-500 px-6 py-3 rounded-lg font-semibold hover:bg-green-600">Chat on WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      {/* 3-Step Process */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8">Your Path to Success in 3 Steps</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-6 border rounded-lg">
+              <h3 className="text-xl font-semibold mb-2">1. Explore Options</h3>
+              <p>Browse countries, universities, and courses tailored to your goals.</p>
+            </div>
+            <div className="p-6 border rounded-lg">
+              <h3 className="text-xl font-semibold mb-2">2. Get Personalized Advice</h3>
+              <p>Submit your details for expert guidance on applications and visas.</p>
+            </div>
+            <div className="p-6 border rounded-lg">
+              <h3 className="text-xl font-semibold mb-2">3. Start Your Journey</h3>
+              <p>Secure your spot and embark on a life-changing experience.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partner Universities */}
+      <section className="py-16 px-4 bg-gray-100">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8">Our Partner Universities</h2>
+          <div className="grid md:grid-cols-4 gap-4">
+            {/* Placeholder images/logos */}
+            <Image src="/images/harvard-logo.png" alt="Harvard" width={150} height={100} className="mx-auto" />
+            <Image src="/images/oxford-logo.png" alt="Oxford" width={150} height={100} className="mx-auto" />
+            <Image src="/images/stanford-logo.png" alt="Stanford" width={150} height={100} className="mx-auto" />
+            <Image src="/images/mit-logo.png" alt="MIT" width={150} height={100} className="mx-auto" />
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Placeholder */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8">What Our Students Say</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <blockquote className="p-6 border rounded-lg">
+              <p>"TGE helped me get into my dream university. Highly recommend!"</p>
+              <cite>- Alex, USA</cite>
+            </blockquote>
+            <blockquote className="p-6 border rounded-lg">
+              <p>"Seamless process and great support throughout."</p>
+              <cite>- Maria, UK</cite>
+            </blockquote>
+            <blockquote className="p-6 border rounded-lg">
+              <p>"Transformed my career with international education."</p>
+              <cite>- Raj, Canada</cite>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* Lead Form */}
+      <section id="lead-form" className="py-16 px-4 bg-gray-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-8">Start Your Application Today</h2>
+          <LeadForm />
+        </div>
+      </section>
+    </main>
+  );
+}
